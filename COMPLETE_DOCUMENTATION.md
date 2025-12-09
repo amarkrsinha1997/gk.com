@@ -5,6 +5,7 @@
 **Last Updated:** December 9, 2025  
 **Domain:** guptakashish.com  
 **Repository:** https://github.com/amarkrsinha1997/nekkha
+**Note:** Nexa's official repository is on GitLab: https://gitlab.com/nexa
 
 ---
 

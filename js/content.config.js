@@ -18,7 +18,7 @@ const content = {
 
     // Hero Section
     hero: {
-      name: "Gupta Kashish",
+      name: "Kashish Gupta",
       roles: "Philanthropist · Counselor · Investor · Nexa India Ambassador",
       headline: "Using Nexa and mindful investing to fund real-world change",
       subheadline:
@@ -162,6 +162,14 @@ const content = {
       timeline3: {
         title: "Building the Ecosystem",
         desc: "Launching Nexa-powered projects across multiple sectors – cafe, housing, luxury, training, health, and fixed deposits – to demonstrate real-world adoption.",
+      },
+      timeline4: {
+        title: "Investment Principles",
+        desc: "Focus on long-term value creation, supporting projects with real utility, and maintaining a portfolio balanced between established and emerging blockchain technologies.",
+      },
+      timeline5: {
+        title: "Community-First Approach",
+        desc: "Believing that cryptocurrency should empower communities, not just traders. Every investment decision considers social impact, educational value, and contribution to financial inclusion.",
       },
     },
 

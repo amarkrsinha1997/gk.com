@@ -7,6 +7,7 @@
 
 @use './variables' as *;
 @use './mixins' as *;
+@use 'sass:color';
 
 // ===================
 // KEYFRAME ANIMATIONS
@@ -199,7 +200,7 @@ a {
     text-decoration: none;
     
     &-text {
-      @include gradient-text(135deg, $color-primary, $color-gold);
+      color: $color-text-primary;
     }
   }
   
@@ -306,6 +307,39 @@ a {
         border-color: $color-primary;
       }
     }
+    
+    .lang-dropdown {
+      background: $color-bg-secondary;
+      border: $border-width-thin solid $color-border;
+      color: $color-text-primary;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-md;
+      cursor: pointer;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      transition: $transition-fast;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23C58A3A' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right $spacing-sm center;
+      padding-right: $spacing-2xl;
+      
+      &:hover {
+        border-color: $color-primary;
+        background-color: rgba($color-primary, 0.05);
+      }
+      
+      &:focus {
+        outline: 2px solid $color-primary;
+        outline-offset: 2px;
+      }
+      
+      option {
+        background: $color-bg-primary;
+        color: $color-text-primary;
+        padding: $spacing-sm;
+      }
+    }
   }
 }
 
@@ -322,10 +356,6 @@ a {
   
   &--secondary {
     @include button-secondary;
-  }
-  
-  &--gold {
-    @include button-gold;
   }
   
   &--full {
@@ -439,8 +469,38 @@ a {
   &__subheadline {
     font-size: $font-size-md;
     color: $color-text-secondary;
-    margin-bottom: $spacing-2xl;
+    margin-bottom: $spacing-lg;
     max-width: 600px;
+  }
+  
+  &__contact {
+    margin-bottom: $spacing-2xl;
+  }
+  
+  &__email {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    color: $color-gold;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    padding: $spacing-sm $spacing-lg;
+    background: rgba($color-gold, 0.1);
+    border: $border-width-thin solid rgba($color-gold, 0.3);
+    border-radius: $border-radius-lg;
+    transition: $transition-default;
+    
+    &:hover {
+      background: rgba($color-gold, 0.2);
+      border-color: $color-gold;
+      transform: translateY(-2px);
+    }
+    
+    &::before {
+      content: '✉';
+      font-size: $font-size-lg;
+    }
   }
   
   &__cta {
@@ -972,6 +1032,29 @@ a {
     font-size: $font-size-sm;
     color: $color-text-muted;
     line-height: $line-height-relaxed;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__email {
+    font-size: $font-size-sm;
+    
+    a {
+      color: $color-gold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-xs;
+      transition: $transition-fast;
+      
+      &:hover {
+        color: color.adjust($color-gold, $lightness: 10%);
+        text-decoration: underline;
+      }
+      
+      &::before {
+        content: '✉';
+      }
+    }
   }
   
   &__heading {
@@ -1181,6 +1264,121 @@ a {
 }
 
 // ===================
+// NEXA LOGO & POWERED BY
+// ===================
+
+.footer__powered {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  
+  .nexa-token-logo {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 0 4px rgba(197, 138, 58, 0.2));
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    
+    &:hover {
+      filter: drop-shadow(0 0 8px rgba(197, 138, 58, 0.3));
+      transform: scale(1.05);
+    }
+  }
+  
+  .powered-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #C58A3A 0%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.5px;
+  }
+}
+
+// ===================
+// LANGUAGE DROPDOWN
+// ===================
+
+.nav__lang {
+  position: relative;
+  
+  .lang-toggle-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text-primary, #fff);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    svg {
+      display: block;
+    }
+  }
+  
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+      }
+      
+      &.active {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563EB;
+      }
+      
+      .lang-flag {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  &:hover .lang-dropdown,
+  &.active .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+// ===================
 // ACCESSIBILITY
 // ===================
 
@@ -1211,3 +1409,4 @@ a {
     page-break-inside: avoid;
   }
 }
+
