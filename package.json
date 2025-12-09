@@ -1,0 +1,37 @@
+{
+  "name": "guptakashish.com",
+  "version": "1.0.0",
+  "description": "Personal website for Gupta Kashish - Nexa India Ambassador, Philanthropist, Counselor, and Investor",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass --watch scss:css --style compressed",
+    "sass:build": "sass scss/styles.scss css/styles.css --style compressed",
+    "serve": "npx live-server --port=3000 --host=localhost",
+    "build": "npm run sass:build",
+    "dev": "npm run sass & npm run serve",
+    "generate:robots": "bash scripts/generate-robots.sh",
+    "generate:sitemap": "bash scripts/generate-sitemap.sh"
+  },
+  "keywords": [
+    "nexa",
+    "cryptocurrency",
+    "blockchain",
+    "vipassana",
+    "philanthropy",
+    "counseling",
+    "investment",
+    "bitcoin-2.0",
+    "portfolio"
+  ],
+  "author": "Gupta Kashish",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.95.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amarkrsinha1997/nekkha"
+  },
+  "homepage": "https://guptakashish.com"
+}
